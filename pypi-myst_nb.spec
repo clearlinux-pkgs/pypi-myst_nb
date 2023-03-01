@@ -4,7 +4,7 @@
 #
 Name     : pypi-myst_nb
 Version  : 0.17.1
-Release  : 17
+Release  : 18
 URL      : https://files.pythonhosted.org/packages/05/de/c2f5daa3c0e739bbad304574f8b2cb08f83c33f0329334dac74965069148/myst-nb-0.17.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/05/de/c2f5daa3c0e739bbad304574f8b2cb08f83c33f0329334dac74965069148/myst-nb-0.17.1.tar.gz
 Summary  : A Jupyter Notebook Sphinx reader built on top of the MyST markdown parser.
@@ -91,7 +91,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1672419815
+export SOURCE_DATE_EPOCH=1677704548
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -102,6 +102,7 @@ export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -f
 export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
 export MAKEFLAGS=%{?_smp_mflags}
 pypi-dep-fix.py . sphinx
+pypi-dep-fix.py . myst-parser
 python3 -m build --wheel --skip-dependency-check --no-isolation
 pushd ../buildavx2/
 export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
@@ -110,6 +111,7 @@ export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
 export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
 pypi-dep-fix.py . sphinx
+pypi-dep-fix.py . myst-parser
 python3 -m build --wheel --skip-dependency-check --no-isolation
 
 popd
@@ -121,6 +123,7 @@ mkdir -p %{buildroot}/usr/share/package-licenses/pypi-myst_nb
 cp %{_builddir}/myst-nb-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-myst_nb/f6901900cf039247901977f1db5534db7b54141b || :
 pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 pypi-dep-fix.py %{buildroot} sphinx
+pypi-dep-fix.py %{buildroot} myst-parser
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
