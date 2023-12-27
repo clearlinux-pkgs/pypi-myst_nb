@@ -7,7 +7,7 @@
 #
 Name     : pypi-myst_nb
 Version  : 1.0.0
-Release  : 21
+Release  : 22
 URL      : https://files.pythonhosted.org/packages/80/84/4440f67c4289c88d6dab41737e5e31db70a57d96856f9171f7ebc4ac7a3f/myst_nb-1.0.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/80/84/4440f67c4289c88d6dab41737e5e31db70a57d96856f9171f7ebc4ac7a3f/myst_nb-1.0.0.tar.gz
 Summary  : A Jupyter Notebook Sphinx reader built on top of the MyST markdown parser.
